@@ -20,4 +20,12 @@ class CustomerController extends AbstractController
             'controller_name' => 'CustomerController', 'customers' => $customers
         ]);
     }
+
+    /**
+     * @Route("/customer/change", name="customer_change")
+     */
+    public function change($id)
+    {
+        return $this->render('customer/change.html.twig', ['id' => $id]);
+    }
 }

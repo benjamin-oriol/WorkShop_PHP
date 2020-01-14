@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CustomerController!{% endblock %}
-
 {% block body %}
 <h1>Liste des Clients</h1>
 <table>
@@ -21,7 +19,7 @@
     <td>{{ customer.phone }}</td>
     <td>{{ customer.BirthDate ? customer.BirthDate|date('d/m/Y') : '' }}</td>
     <td>{{customer.BirthDate ? ((customer.BirthDate|date('d/m'))==("now"|date('d/m')) ? 'imprimer le BR' :'') : '' }}</td>
-    <td>Détails/modifications</td>
+    <td><a href="customer/change" {#id="{{customer.fisrtname}}#}">change</a></td>
     <td>Supprimer</td>
     </tr>
     {% endfor %}
