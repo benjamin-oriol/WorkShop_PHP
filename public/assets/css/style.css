@@ -49,10 +49,11 @@ body{
 .btn{
     border-radius: 20px;
 }
-/* 
+
 .background-cnx{
-    background-image: url('/img/Fond_accueil.jpg')!important;
-} */
+    background-image: url('/assets/img/Fond_accueil.jpg')!important;
+    background-size: cover;
+}
 
 .card-login{
     border-radius:35px!important;
@@ -64,4 +65,17 @@ body{
 .btn-warning{
     margin-left: 450px;
     width: 150px;
+}
+
+.btn-info{
+    margin-left: 450px;
+    width: 150px;
+}
+
+.navbar-brand{
+    margin-left:50px;
+}
+
+#position-small-text{
+    margin-left: 450px;
 }
