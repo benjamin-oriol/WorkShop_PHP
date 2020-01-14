@@ -23,13 +23,13 @@
     margin: auto;
 }
 
-.card{
+.card-modify{
     margin-bottom:15px;
     border-radius: 35px;
     border: 1px solid #3fa9f5;
 }
 
-.card:hover{
+.card-modify:hover{
     background-color: #e0e0e0;
 }
 
@@ -48,4 +48,20 @@ body{
 
 .btn{
     border-radius: 20px;
+}
+/* 
+.background-cnx{
+    background-image: url('/img/Fond_accueil.jpg')!important;
+} */
+
+.card-login{
+    border-radius:35px!important;
+    margin: auto;
+    width: 700px;
+    margin-top: 200px;;
+}
+
+.btn-warning{
+    margin-left: 450px;
+    width: 150px;
 }

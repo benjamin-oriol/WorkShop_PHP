@@ -5,10 +5,15 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ * "email",
+ * message= "L'email que vous avez indiqué existe déjà !"
+ * )
  */
 class User implements UserInterface
 {
@@ -21,6 +26,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
@@ -125,14 +131,16 @@ class User implements UserInterface
      *
      * @return (Role|string)[] The user roles
      */
-    public function getRoles(): array{
+    private $roles = [];
+
+    public function getRoles(): array
+    {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
+    
         return array_unique($roles);
     }
-
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -151,7 +159,7 @@ class User implements UserInterface
      * the plain-text password is stored on this object.
      */
     public function eraseCredentials(){
-        
+
     }
 
 }
