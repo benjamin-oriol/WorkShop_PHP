@@ -1,6 +1,6 @@
 .size-logo-equipement{
-    height:40%;
-    width: 40%;
+    height:35%;
+    width: 35%;
 }
 
 .size-logo-staff{
@@ -9,18 +9,43 @@
 }
 
 .size-logo-reservation{
-    height:50%;
-    width: 50%;
+    height:35%;
+    width: 35%;
 }
 
 .size-logo-client{
-    height:50%;
-    width: 50%;
+    height:15%;
+    width: 32%;
 }
 
 .logo{
-    height:50%;
-    width: 50%;
     display: block;
     margin: auto;
+}
+
+.card{
+    margin-bottom:15px;
+    border-radius: 35px;
+    border: 1px solid #3fa9f5;
+}
+
+.card:hover{
+    background-color: #e0e0e0;
+}
+
+.card-title{
+    text-align:center;
+    padding-top: 15px;
+}
+
+.position-block{
+    margin-top: 15px;
+}
+
+body{
+    background-color: #eaf4f4;
+}
+
+.btn{
+    border-radius: 20px;
 }

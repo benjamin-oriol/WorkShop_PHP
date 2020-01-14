@@ -1,18 +1,15 @@
-{% extends "base.html.twig" %}
+{% extends "common/layout.html.twig" %}
 
 {% block title %}Jetski{% endblock title %}
 
-{% block body %}
-    <h1>Home page</h1>
 
-    <div class="row">
+{% block content %}
+<div class="row position-block">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
                 <img class="size-logo-equipement logo" src="/assets/img/Logo_equipements.png" alt="jet_ski_equipement">
-              <h5 class="card-title">EQUIPEMENTS</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h3 class="card-title">EQUIPEMENTS</h3>
             </div>
           </div>
         </div>
@@ -20,9 +17,7 @@
           <div class="card">
             <div class="card-body">
                 <img class="size-logo-staff logo" src="/assets/img/Logo_staff.png" alt="jet_ski_staff">
-              <h5 class="card-title">STAFF</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h3 class="card-title">STAFF</h3>
             </div>
           </div>
         </div>
@@ -30,22 +25,18 @@
             <div class="card">
               <div class="card-body">
                 <img class="size-logo-reservation logo" src="/assets/img/Logo_reservations.png" alt="jet_ski_reservations">
-                <h5 class="card-title">RESERVATIONS</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h3 class="card-title">RESERVATIONS</h3>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6">
+        </div>
+        <div class="col-sm-6">
             <div class="card">
               <div class="card-body">
                 <img class="size-logo-client logo" src="/assets/img/Logo_client.png" alt="jet_ski_clients">
-                <h5 class="card-title">CLIENTS</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h3 class="card-title">CLIENTS</h3>
               </div>
             </div>
-          </div>
-    </div>
+        </div>
+</div>
 
 {% endblock %}
