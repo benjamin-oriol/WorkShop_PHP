@@ -3,13 +3,30 @@
 {% block title %}Hello CustomerController!{% endblock %}
 
 {% block body %}
-<list>
-    <ol>
-        {% for customer in customers %}
-        <li>{{ customer.lastname}}</li>
+<h2>Liste des Clients</h2>
+<table>
+    <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Tel</th>
+    <th>Date anniversaire</th>
+    <th>Détails/modifications</th>
+    <th>Supprimer</th>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+    <td>{{ customer.firstname }}</td>
+    <td>{{ customer.lastname }}</td>
+    <td>{{ customer.phone }}</td>
+    <td>{{ customer.BirthDate ? customer.BirthDate|date('d/m/Y') : '' }}</td>
+    <td>Détails/modifications</td>
+    <td>Supprimer</td>
+    </tr>
+    {% endfor %}
 
-        {% endfor %}
-    </ol>
-</list>
+    
+  </table>
+
+
 {% endblock %}
 
