@@ -1,0 +1,26 @@
+.size-logo-equipement{
+    height:40%;
+    width: 40%;
+}
+
+.size-logo-staff{
+    height:50%;
+    width: 50%;
+}
+
+.size-logo-reservation{
+    height:50%;
+    width: 50%;
+}
+
+.size-logo-client{
+    height:50%;
+    width: 50%;
+}
+
+.logo{
+    height:50%;
+    width: 50%;
+    display: block;
+    margin: auto;
+}
