@@ -3,13 +3,14 @@
 {% block title %}Hello CustomerController!{% endblock %}
 
 {% block body %}
-<h2>Liste des Clients</h2>
+<h1>Liste des Clients</h1>
 <table>
     <tr>
     <th>Nom</th>
     <th>Prénom</th>
     <th>Tel</th>
     <th>Date anniversaire</th>
+    <th>Bon de reduction</th>
     <th>Détails/modifications</th>
     <th>Supprimer</th>
     </tr>
@@ -19,11 +20,12 @@
     <td>{{ customer.lastname }}</td>
     <td>{{ customer.phone }}</td>
     <td>{{ customer.BirthDate ? customer.BirthDate|date('d/m/Y') : '' }}</td>
+    <td>{{customer.BirthDate ? ((customer.BirthDate|date('d/m'))==("now"|date('d/m')) ? 'imprimer le BR' :'') : '' }}</td>
     <td>Détails/modifications</td>
     <td>Supprimer</td>
     </tr>
     {% endfor %}
-
+ 
     
   </table>
 
