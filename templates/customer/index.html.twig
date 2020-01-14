@@ -3,8 +3,13 @@
 {% block title %}Hello CustomerController!{% endblock %}
 
 {% block body %}
-<article>
-    <h2>hello customer</h2>
-</article>
+<list>
+    <ol>
+        {% for customer in customers %}
+        <li>{{ customer.lastname}}</li>
+
+        {% endfor %}
+    </ol>
+</list>
 {% endblock %}
 

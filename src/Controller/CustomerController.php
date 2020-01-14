@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Customer;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CustomerController extends AbstractController
 {
@@ -12,8 +13,11 @@ class CustomerController extends AbstractController
      */
     public function index()
     {
+        $repo = $this->getDoctrine()->getRepository(Customer::class);
+
+        $customers = $repo->findAll();
         return $this->render('customer/index.html.twig', [
-            'controller_name' => 'CustomerController',
+            'controller_name' => 'CustomerController', 'customers' => $customers
         ]);
     }
 }
