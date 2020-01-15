@@ -46,38 +46,14 @@ class CustomerController extends AbstractController
         $customer = new Customer();
 
         $form = $this->createFormBuilder($customer)
-                        ->add('firstname', TextType::class, [
-                            'label' => 'Nom',
-                            'attr' => ['placeholder' => "Nom du client"]
-                        ])
-                        ->add('lastname', TextType::class, [
-                            'label' => 'Prenom',
-                            'attr' => ['placeholder' => "Prenom du client"]
-                        ])
-                        ->add('email', EmailType::class, [
-                            'label' => 'Email',
-                            'attr' => ['placeholder' => "Email du client"]
-                        ])
-                        ->add('adress', TextType::class, [
-                            'label' => 'Adresse',
-                            'attr' => ['placeholder' => "Adresse du client"]
-                        ])
-                        ->add('phone', TelType::class, [
-                            'label' => 'Telephone',
-                            'attr' => ['placeholder' => "Telephone du client"]
-                        ])
-                        ->add('birth_date',  BirthdayType::class, [
-                            'label' => 'Date d\'anniversaire'
-                            ])
-                        ->add('coastal_license', TextType::class, [
-                            'label' => 'Permis Cotier',
-                            'attr' => ['placeholder' => "Permis Cotier du client"]
-                        ])
-                        ->add('reduction', NumberType::class, [
-                            'label' => 'reduction'
-                            ])
-                        ->add('save', SubmitType::class, ['label' => 'Sauvegarder'])
-                        /*->add('', UrlType::class, ['label' => 'retour à la liste'])*/
+                        ->add('firstname')
+                        ->add('lastname')
+                        ->add('email')
+                        ->add('adress')
+                        ->add('phone')
+                        ->add('birth_date')
+                        ->add('coastal_license')
+                        ->add('reduction')
                         ->getForm();
         return $this->render('customer/create.html.twig',['formCustomer' => $form->createView()]);
     }

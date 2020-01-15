@@ -13,7 +13,15 @@
 
 
     {{form_start(formCustomer)}}        
-        {{form_widget(formCustomer)}}
+        {{ form_row(formCustomer.firstname, {'attr' :{'placeholder' : "Nom du client"}}) }}
+        {{ form_row(formCustomer.lastname, {'attr' :{'placeholder' : "Prenom du client"}}) }}
+        {{ form_row(formCustomer.email, {'attr' :{'placeholder' : "Email du client"}}) }}
+        {{ form_row(formCustomer.adress, {'attr' :{'placeholder' : "Adresse du client"}}) }}
+        {{ form_row(formCustomer.phone, {'attr' :{'placeholder' : "Telephone du client"}}) }}
+        {{ form_row(formCustomer.birth_date) }}
+        {{ form_row(formCustomer.coastal_license, {'attr' :{'placeholder' : "Permis Cotier du client"}}) }}
+        {{ form_row(formCustomer.reduction) }}
+        <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Sauvegarder</button>
     {{form_end(formCustomer)}}
 
     <a href="{{ path('customer') }}" class="btn btn-outline-secondary"><i class="fas fa-reply-all"></i> Retour à la liste</a>
