@@ -2,9 +2,14 @@
 
 
 
-{% block title %}Modification Client{% endblock %}
+{% block title %}Fiche Client{% endblock %}
 
 
 {% block body %}
-<h1>Modification de {{customer.firstname}}</h1>
+    <h1>Fiche de {{customer.firstname}} - {{customer.lastname}}</h1>
+
+
+        <a href="{{ path('customer') }}" class="btn btn-outline-secondary"><i class="fas fa-reply-all"></i> Retour à la liste</a>
+        <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Sauvegarder</button>
+
 {% endblock %}

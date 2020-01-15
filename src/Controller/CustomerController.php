@@ -4,11 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Repository\CustomerRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CustomerController extends AbstractController
 {
+/*liste des clients*/
     /**
      * @Route("/customer", name="customer")
      */
@@ -23,16 +26,43 @@ class CustomerController extends AbstractController
         ]);
     }
 
+/*creation fiche nouveau client*/
+    /**
+     * @Route("/customer/create", name="customer_create")
+     */
+    public function create(Request $request, EntityManagerInterface $manager) {
 
+        
+        $customer = new Customer();
+
+        $form = $this->createFormBuilder($customer)
+                        ->add('firstname')
+                        ->add('lastname')
+                        ->add('email')
+                        ->add('adress')
+                        ->add('phone')
+                        ->add('birth_date')
+                        ->add('coastal_license')
+                        ->add('reduction')
+                        ->getForm();
+        return $this->render('customer/create.html.twig',['formCustomer' => $form->createView()]);
+    }
+
+
+/*fiche client (visu/modif)*/
     /**
      * @Route("/customer/{id}", name="customer_change")
      */
     public function change(Customer $customer/*,$id*/)
     {
+        
         /*grace au parametre Customer $customer =>
         $repo = $this->getDoctrine()->getRepository(Customer::class);
 
         $customer = $repo->find($id);*/
-    return $this->render('customer/change.html.twig', ['customer' => $customer]);
+
+    return $this->render('customer/change.html.twig',  ['customer' => $customer]);
     }
+
+
 }

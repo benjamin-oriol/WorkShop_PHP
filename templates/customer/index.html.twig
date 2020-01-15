@@ -2,6 +2,8 @@
 
 {% block body %}
 <h1>Liste des Clients</h1>
+
+<h3><a href="{{path('customer_create')}}" class="btn btn-outline-secondary">Nouveau Client</a></h3>
 <table>
     <tr>
     <th>Nom</th>
@@ -19,8 +21,8 @@
     <td>{{ customer.phone }}</td>
     <td>{{ customer.BirthDate ? customer.BirthDate|date('d/m/Y') : '' }}</td>
     <td>{{customer.BirthDate ? ((customer.BirthDate|date('d/m'))==("now"|date('d/m')) ? 'imprimer le BR' :'') : '' }}</td>
-    <td><a href="{{path('customer_change',{'id': customer.id})}}">Voir/Modifier</a></td>
-    <td>Supprimer</td>
+    <td><a href="{{path('customer_change',{'id': customer.id})}}" class="btn btn-outline-secondary">Voir/Modifier</a></td>
+    <td><a href="#" class="btn btn-danger">Supprimer</a></td>
     </tr>
     {% endfor %}
  
