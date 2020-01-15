@@ -1,0 +1,81 @@
+.size-logo-equipement{
+    height:35%;
+    width: 35%;
+}
+
+.size-logo-staff{
+    height:50%;
+    width: 50%;
+}
+
+.size-logo-reservation{
+    height:35%;
+    width: 35%;
+}
+
+.size-logo-client{
+    height:15%;
+    width: 32%;
+}
+
+.logo{
+    display: block;
+    margin: auto;
+}
+
+.card-modify{
+    margin-bottom:15px;
+    border-radius: 35px;
+    border: 1px solid #3fa9f5;
+}
+
+.card-modify:hover{
+    background-color: #e0e0e0;
+}
+
+.card-title{
+    text-align:center;
+    padding-top: 15px;
+}
+
+.position-block{
+    margin-top: 15px;
+}
+
+body{
+    background-color: #eaf4f4;
+}
+
+.btn{
+    border-radius: 20px;
+}
+
+.background-cnx{
+    background-image: url('/assets/img/Fond_accueil.jpg')!important;
+    background-size: cover;
+}
+
+.card-login{
+    border-radius:35px!important;
+    margin: auto;
+    width: 700px;
+    margin-top: 200px;;
+}
+
+.btn-warning{
+    margin-left: 450px;
+    width: 150px;
+}
+
+.btn-info{
+    margin-left: 450px;
+    width: 150px;
+}
+
+.navbar-brand{
+    margin-left:50px;
+}
+
+#position-small-text{
+    margin-left: 450px;
+}
