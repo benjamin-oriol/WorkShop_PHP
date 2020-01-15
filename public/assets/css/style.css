@@ -1,3 +1,7 @@
+a {
+    text-decoration: none !important;
+}
+
 .size-logo-equipement{
     height:35%;
     width: 35%;
@@ -36,6 +40,7 @@
 .card-title{
     text-align:center;
     padding-top: 15px;
+    color: #000;
 }
 
 .position-block{
@@ -78,4 +83,10 @@ body{
 
 #position-small-text{
     margin-left: 450px;
+}
+
+.card-table {
+    padding: 25px;
+    border-radius: 25px;
+    margin-top: 40px;
 }

@@ -97,7 +97,7 @@ class Equipment
 
     public function getPrice(): ?array
     {
-        return unserialize($this->price);
+        return $this->price ? unserialize($this->price) : [null, null, null];
     }
 
     public function setPrice(array $price): self

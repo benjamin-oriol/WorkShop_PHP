@@ -42,7 +42,7 @@ class EquipmentController extends AbstractController {
     if($form->isSubmitted() && $form->isValid()){
         $this->manager->persist($equipment);
         $this->manager->flush();
-        $this->addFlash('success', 'equipment modifiée avec succès');
+        $this->addFlash('success', 'Equipment modifiée avec succès');
         return $this->redirectToRoute('equipment.list');
     }
 
@@ -62,9 +62,11 @@ class EquipmentController extends AbstractController {
 
     $form->handleRequest($request);
     if($form->isSubmitted() && $form->isValid()){
+        $equipment->getPrice() === [null, null, null];
+        $equipment->setPrice([null, null, null]);
         $this->manager->persist($equipment);
         $this->manager->flush();
-        $this->addFlash('success', 'equipment créé avec succès');
+        $this->addFlash('success', 'Equipment créé avec succès');
         return $this->redirectToRoute('equipment.list');
     }
 
@@ -80,6 +82,7 @@ class EquipmentController extends AbstractController {
   public function delete(Equipment $equipment) {
     $this->manager->remove($equipment);
     $this->manager->flush();
+    $this->addFlash('success', 'Equipment supprimé avec succès');
     return $this->redirectToRoute('equipment.list');
   }
 }
