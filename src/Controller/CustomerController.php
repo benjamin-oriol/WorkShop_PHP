@@ -8,10 +8,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
@@ -74,6 +76,8 @@ class CustomerController extends AbstractController
                         ->add('reduction', NumberType::class, [
                             'label' => 'reduction'
                             ])
+                        ->add('save', SubmitType::class, ['label' => 'Sauvegarder'])
+                        /*->add('', UrlType::class, ['label' => 'retour à la liste'])*/
                         ->getForm();
         return $this->render('customer/create.html.twig',['formCustomer' => $form->createView()]);
     }

@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme formCustomer 'bootstrap_4_layout.html.twig' %}
+
 
 
 {% block title %}Nouveau Client{% endblock %}
@@ -10,14 +12,11 @@
 
 
 
-    {{form_start(formCustomer)}}
+    {{form_start(formCustomer)}}        
         {{form_widget(formCustomer)}}
     {{form_end(formCustomer)}}
 
     <a href="{{ path('customer') }}" class="btn btn-outline-secondary"><i class="fas fa-reply-all"></i> Retour à la liste</a>
-    <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Sauvegarder</button>
-
-    
 
 
 {% endblock %}
