@@ -46,35 +46,33 @@ class CustomerController extends AbstractController
         $form = $this->createFormBuilder($customer)
                         ->add('firstname', TextType::class, [
                             'label' => 'Nom',
-                            'attr' => ['placeholder' => "Nom du client", 'class' => 'form-control']
+                            'attr' => ['placeholder' => "Nom du client"]
                         ])
                         ->add('lastname', TextType::class, [
                             'label' => 'Prenom',
-                            'attr' => ['placeholder' => "Prenom du client", 'class' => 'form-control']
+                            'attr' => ['placeholder' => "Prenom du client"]
                         ])
                         ->add('email', EmailType::class, [
                             'label' => 'Email',
-                            'attr' => ['placeholder' => "Email du client", 'class' => 'form-control']
+                            'attr' => ['placeholder' => "Email du client"]
                         ])
                         ->add('adress', TextType::class, [
                             'label' => 'Adresse',
-                            'attr' => ['placeholder' => "Adresse du client", 'class' => 'form-control']
+                            'attr' => ['placeholder' => "Adresse du client"]
                         ])
                         ->add('phone', TelType::class, [
                             'label' => 'Telephone',
-                            'attr' => ['placeholder' => "Telephone du client", 'class' => 'form-control']
+                            'attr' => ['placeholder' => "Telephone du client"]
                         ])
                         ->add('birth_date',  BirthdayType::class, [
-                            'label' => 'Date d\'anniversaire',
-                            'attr' => ['class' => 'form-control']
+                            'label' => 'Date d\'anniversaire'
                             ])
                         ->add('coastal_license', TextType::class, [
                             'label' => 'Permis Cotier',
-                            'attr' => ['placeholder' => "Permis Cotier du client", 'class' => 'form-control']
+                            'attr' => ['placeholder' => "Permis Cotier du client"]
                         ])
                         ->add('reduction', NumberType::class, [
-                            'label' => 'reduction',
-                            'attr' => ['class' => 'form-control']
+                            'label' => 'reduction'
                             ])
                         ->getForm();
         return $this->render('customer/create.html.twig',['formCustomer' => $form->createView()]);
