@@ -65,11 +65,13 @@ class CustomerController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($customer);
             $manager->flush();
-            $this->addFlash('success', 'Equipment modifiée avec succès');
             return $this->redirectToRoute('customer');
         }
     
         
-        return $this->render('customer/create.html.twig', ['formCustomer' => $form->createView()] );
+        return $this->render('customer/create.html.twig', [
+            'formCustomer' => $form->createView(),
+            'editMode' => $customer->getId() !== null
+            ]);
     }
 }
