@@ -19,7 +19,7 @@
     <td>{{ customer.phone }}</td>
     <td>{{ customer.BirthDate ? customer.BirthDate|date('d/m/Y') : '' }}</td>
     <td>{{customer.BirthDate ? ((customer.BirthDate|date('d/m'))==("now"|date('d/m')) ? 'imprimer le BR' :'') : '' }}</td>
-    <td><a href="{{path('customer_change',{id: customer.id})}}">Voir/Modifier</a></td>
+    <td><a href="{{path('customer_change',{'id': customer.id})}}">Voir/Modifier</a></td>
     <td>Supprimer</td>
     </tr>
     {% endfor %}
