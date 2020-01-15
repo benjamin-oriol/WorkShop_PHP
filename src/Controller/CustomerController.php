@@ -3,20 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Customer;
+use App\Form\CustomerType;
 use App\Repository\CustomerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\PercentType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CustomerController extends AbstractController
@@ -49,7 +40,7 @@ class CustomerController extends AbstractController
         $customer = new Customer();
         }
 
-        $form = $this->createFormBuilder($customer)
+     /*    $form = $this->createFormBuilder($customer)
                         ->add('firstname')
                         ->add('lastname')
                         ->add('email')
@@ -57,8 +48,10 @@ class CustomerController extends AbstractController
                         ->add('phone')
                         ->add('birth_date')
                         ->add('coastal_license')
-                        ->add('reduction')
-                        ->getForm();
+                        ->add('reduction') 
+                        ->getForm();*/
+
+        $form= $this->createForm(CustomerType::class, $customer);
 
         $form->handleRequest($request);
 
