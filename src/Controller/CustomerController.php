@@ -36,14 +36,18 @@ class CustomerController extends AbstractController
         ]);
     }
 
-/*creation fiche nouveau client*/
+
+
+/*creation/modification fiche nouveau client*/
     /**
      * @Route("/customer/create", name="customer_create")
+     * @Route("/customer/{id}/edit", name="customer_edit")
      */
-    public function create(Request $request, EntityManagerInterface $manager) {
+    public function form(Request $request, EntityManagerInterface $manager, Customer $customer= null) {
 
-        
+        if (!$customer){
         $customer = new Customer();
+        }
 
         $form = $this->createFormBuilder($customer)
                         ->add('firstname')
@@ -55,24 +59,17 @@ class CustomerController extends AbstractController
                         ->add('coastal_license')
                         ->add('reduction')
                         ->getForm();
-        return $this->render('customer/create.html.twig',['formCustomer' => $form->createView()]);
-    }
 
+        $form->handleRequest($request);
 
-/*fiche client (visu/modif)*/
-    /**
-     * @Route("/customer/{id}", name="customer_change")
-     */
-    public function change(Customer $customer/*,$id*/)
-    {
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($customer);
+            $manager->flush();
+            $this->addFlash('success', 'Equipment modifiée avec succès');
+            return $this->redirectToRoute('customer');
+        }
+    
         
-        /*grace au parametre Customer $customer =>
-        $repo = $this->getDoctrine()->getRepository(Customer::class);
-
-        $customer = $repo->find($id);*/
-
-    return $this->render('customer/change.html.twig',  ['customer' => $customer]);
+        return $this->render('customer/create.html.twig', ['formCustomer' => $form->createView()] );
     }
-
-
 }
