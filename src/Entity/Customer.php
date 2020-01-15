@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
@@ -18,26 +19,63 @@ class Customer
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Erreur, pas assez de caractères",
+     *      maxMessage = "Erreur, trop de caractères"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Erreur, pas assez de caractères",
+     *      maxMessage = "Erreur, trop de caractères"
+     * )
+     * @Assert\NotNull
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=150)
+     *  @Assert\Length(
+     *      min = 2,
+     *      max = 150,
+     *      minMessage = "Erreur, pas assez de caractères",
+     *      maxMessage = "Erreur, trop de caractères"
+     * )
+     * @Assert\NotNull
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)    
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Erreur, pas assez de caractères",
+     *      maxMessage = "Erreur, trop de caractères"
+     * )
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Erreur, pas assez de caractères",
+     *      maxMessage = "Erreur, trop de caractères"
+     * )
+     * @Assert\NotNull
      */
     private $phone;
 
@@ -48,6 +86,12 @@ class Customer
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Erreur, pas assez de caractères",
+     *      maxMessage = "Erreur, trop de caractères"
+     * )
      */
     private $coastal_license;
 
