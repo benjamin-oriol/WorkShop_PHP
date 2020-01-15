@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ equipment.name ?? 'Créer un équipement' }}
+{% endblock %}
+
+{% block body %}
+  {{form_start(form)}}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.power) }}
+    {{ form_row(form.isValid) }}
+    <a href="{{ path('equipment.list') }}" class="btn btn-outline-secondary"><i class="fas fa-reply-all"></i> Retour à la liste</a>
+    <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Sauvegarder</button>
+  {{form_end(form)}}
+{% endblock %}

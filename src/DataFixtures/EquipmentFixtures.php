@@ -14,7 +14,7 @@ class EquipmentFixtures extends Fixture {
     $equipment1->setDescription('Jet Ski deux place');
     $equipment1->setpower(15);
     $equipment1->setIsValid(true);
-    $equipment1->setPrice(["0.5" => "80", "1" => "130", "2" => "220"]);
+    $equipment1->setPrice(["80", "130", "220"]);
     $manager->persist($equipment1);
 
     $equipment2 = new Equipment();
@@ -22,7 +22,7 @@ class EquipmentFixtures extends Fixture {
     $equipment2->setDescription('Jet ski une place');
     $equipment2->setpower(10);
     $equipment2->setIsValid(true);
-    $equipment2->setPrice(["0.5" => "70", "1" => "120", "2" => "200"]);
+    $equipment2->setPrice(["70", "120", "200"]);
     $manager->persist($equipment2);
 
     $equipment3 = new Equipment();
@@ -30,20 +30,20 @@ class EquipmentFixtures extends Fixture {
     $equipment3->setDescription('Jet Ski deux place');
     $equipment3->setpower(20);
     $equipment3->setIsValid(true);
-    $equipment3->setPrice(["0.5" => "90", "1" => "140", "2" => "240"]);
+    $equipment3->setPrice(["90", "140", "240"]);
     $manager->persist($equipment3);
 
     $equipment4 = new Equipment();
     $equipment4->setName('Bouée');
     $equipment4->setDescription('De 1 à 3 personne');
     $equipment4->setIsValid(true);
-    $equipment4->setPrice(["0.5" => "40"]);
+    $equipment4->setPrice(["40", null, null]);
     $manager->persist($equipment4);
     
     $equipment5 = new Equipment();
     $equipment5->setName('Wake-board');
     $equipment5->setIsValid(true);
-    $equipment5->setPrice(["0.5" => "40"]);
+    $equipment5->setPrice(["40", null, null]);
     $manager->persist($equipment5);
     
     $equipment6 = new Equipment();
@@ -51,13 +51,13 @@ class EquipmentFixtures extends Fixture {
     $equipment6->setDescription("Jusqu'à 8 places disponibles");
     $equipment6->setpower(30);
     $equipment6->setIsValid(true);
-    $equipment6->setPrice(["1" => "100", "2" => "180"]);
+    $equipment6->setPrice([null, "100", "180"]);
     $manager->persist($equipment6);
 
     $equipment7 = new Equipment();
     $equipment7->setName('Ski-Nautique');
     $equipment7->setIsValid(true);
-    $equipment7->setPrice(["0.5" => "40"]);
+    $equipment7->setPrice(["40", null, null]);
     $manager->persist($equipment7);
 
     $manager->flush();
