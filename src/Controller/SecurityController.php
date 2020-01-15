@@ -52,7 +52,7 @@ class SecurityController extends AbstractController
      * @Route ("/connexion", name="security_login")
      *
      */
-    public function login( AuthenticationUtils $authentication) {
+    public function login( AuthenticationUtils $authentication, Request $request) {
         $error= $authentication->getLastAuthenticationError();
         $lastusername= $authentication->getLastUsername();
 

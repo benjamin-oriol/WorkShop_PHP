@@ -18,9 +18,6 @@ class RegistrationType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email', 'attr' => array('placeholder' => 'Entrez votre email')
             ])
-            ->add('username', TextareaType::class, [
-                'label' => 'Pseudo', 'attr' => array('placeholder' => 'Entrez votre pseudo')
-            ])
             ->add('firstname', TextareaType::class, [
                 'label' => 'Prénom', 'attr' => array('placeholder' => 'Entrez votre prénom')
             ])
