@@ -25,6 +25,15 @@ class Customer
      *      minMessage = "Erreur, pas assez de caractères",
      *      maxMessage = "Erreur, trop de caractères"
      * )
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut contenir de nombre"
+     * )
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z]+$/i",
+     *     htmlPattern = "^[a-zA-Z]+$"
+     * )
      */
     private $firstname;
 
@@ -37,6 +46,15 @@ class Customer
      *      maxMessage = "Erreur, trop de caractères"
      * )
      * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut contenir de nombre"
+     * )
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z]+$/i",
+     *     htmlPattern = "^[a-zA-Z]+$"
+     * )
      */
     private $lastname;
 
@@ -49,6 +67,10 @@ class Customer
      *      maxMessage = "Erreur, trop de caractères"
      * )
      * @Assert\NotNull
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
@@ -59,10 +81,6 @@ class Customer
      *      max = 255,
      *      minMessage = "Erreur, pas assez de caractères",
      *      maxMessage = "Erreur, trop de caractères"
-     * )
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
      * )
      */
     private $adress;
