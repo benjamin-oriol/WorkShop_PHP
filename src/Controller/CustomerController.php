@@ -22,10 +22,13 @@ class CustomerController extends AbstractController
     }
 
     /**
-     * @Route("/customer/change", name="customer_change")
+     * @Route("/customer/{id}", name="customer_change")
      */
     public function change($id)
     {
-        return $this->render('customer/change.html.twig', ['id' => $id]);
+        $repo = $this->getDoctrine()->getRepository(Customer::class);
+
+        $customer = $repo->find($id);
+    return $this->render('customer/change.html.twig', ['customer' => $customer]);
     }
 }

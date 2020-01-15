@@ -14,12 +14,12 @@
     </tr>
     {% for customer in customers %}
     <tr>
-    <td>{{ customer.firstname }}</td>
+    <td>{{customer.id}} {{ customer.firstname }}</td>
     <td>{{ customer.lastname }}</td>
     <td>{{ customer.phone }}</td>
     <td>{{ customer.BirthDate ? customer.BirthDate|date('d/m/Y') : '' }}</td>
     <td>{{customer.BirthDate ? ((customer.BirthDate|date('d/m'))==("now"|date('d/m')) ? 'imprimer le BR' :'') : '' }}</td>
-    <td><a href="customer/change" {#id="{{customer.fisrtname}}#}">change</a></td>
+    <td><a href="{{path('customer_change',{id: customer.id})}}">Voir/Modifier</a></td>
     <td>Supprimer</td>
     </tr>
     {% endfor %}
