@@ -90,3 +90,25 @@ body{
     border-radius: 25px;
     margin-top: 40px;
 }
+
+.card-staff{
+    border-radius:20px;
+}
+
+.card-body-staff{
+    background-color:#fff;
+    border-radius:0px 0px 20px 20px;
+}
+
+.card-header-staff{
+        /* padding: 0.75rem 1.25rem; */
+        margin-bottom: 0;
+        height: 100px;;
+        border-radius: 20px 20px 0px 0px;
+        background-color: rgba(0,0,0,0.03);
+        border-bottom: 1px solid rgba(0,0,0,0.125);
+}
+
+.typographie{
+    color: #2b3c4d!important;
+}

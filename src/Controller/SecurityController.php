@@ -18,7 +18,7 @@ class SecurityController extends AbstractController
     //Attributs
     private $manager;
 
-    //Déclaration du constructor
+    //Déclaration du constructor, il initialise les attributs de l'objet, il est appelé en premier
     public function __construct(EntityManagerInterface $manager){
         $this->manager = $manager;
     }
