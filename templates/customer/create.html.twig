@@ -8,5 +8,17 @@
 {% block body %}
     <h1>Création d'un nouveau client</h1>
 
-    {{form(formCustomer)}}
+    {{form_start(formCustomer)}}
+    {{ form_row(formCustomer.firstname) }}
+    {{ form_row(formCustomer.lastname) }}
+    {{ form_row(formCustomer.email) }}
+    {{ form_row(formCustomer.adress) }}
+    {{ form_row(formCustomer.phone) }}
+    {{ form_row(formCustomer.birth_date) }}
+    {{ form_row(formCustomer.coastal_license) }}
+    {{ form_row(formCustomer.reduction) }}
+    <a href="{{ path('customer') }}" class="btn btn-outline-secondary"><i class="fas fa-reply-all"></i> Retour à la liste</a>
+    <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Sauvegarder</button>
+{{form_end(formCustomer)}}
+
 {% endblock %}

@@ -16,7 +16,7 @@
     </tr>
     {% for customer in customers %}
     <tr>
-    <td>{{customer.id}} {{ customer.firstname }}</td>
+    <td>{{ customer.firstname }}</td>
     <td>{{ customer.lastname }}</td>
     <td>{{ customer.phone }}</td>
     <td>{{ customer.BirthDate ? customer.BirthDate|date('d/m/Y') : '' }}</td>
