@@ -30,10 +30,6 @@ class Customer
      *     match=false,
      *     message="Votre nom ne peut contenir de nombre"
      * )
-     * @Assert\Regex(
-     *     pattern     = "/^[a-z]+$/i",
-     *     htmlPattern = "^[a-zA-Z]+$"
-     * )
      */
     private $firstname;
 
@@ -51,10 +47,6 @@ class Customer
      *     match=false,
      *     message="Votre nom ne peut contenir de nombre"
      * )
-     * @Assert\Regex(
-     *     pattern     = "/^[a-z]+$/i",
-     *     htmlPattern = "^[a-zA-Z]+$"
-     * )
      */
     private $lastname;
 
@@ -67,10 +59,6 @@ class Customer
      *      maxMessage = "Erreur, trop de caractères"
      * )
      * @Assert\NotNull
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
-     * )
      */
     private $email;
 
