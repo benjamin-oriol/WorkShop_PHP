@@ -1,5 +1,58 @@
 <?php
 
+// src/DataFixtures/FakerFixtures.php
+namespace App\DataFixtures;
+
+use App\Entity\Customer;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\Persistence\ObjectManager;
+use Faker;
+
+class CostumerFixtures extends Fixture
+{
+    public function load(ObjectManager $manager)
+    {
+
+        // On configure dans quelles langues nous voulons nos données
+        $faker = Faker\Factory::create('fr_FR');
+
+        // on créé 2 personnes
+        for ($i = 1; $i <=10;$i++) {
+            if ( $i%2 != 0 ){
+            $customer = new Customer();
+            $customer->setFirstname($faker->name);
+            $customer->setLastname($faker->name);
+            $customer->setEmail($faker->email);
+            $customer->setAdress($faker->address);
+            $customer->setPhone($faker->phoneNumber);
+            $customer->setBirthDate($faker->dateTimeThisCentury);
+            $customer->setCoastalLicense('jdgzibz-'.$i);
+            $customer->setReduction(Null);
+            
+            $manager->persist($customer);
+        }
+        else {
+            $customer = new Customer();
+            $customer->setFirstname($faker->name);
+            $customer->setLastname($faker->name);
+            $customer->setEmail($faker->email);
+            $customer->setAdress($faker->address);
+            $customer->setPhone($faker->phoneNumber);
+            $customer->setBirthDate(NULL);
+            $customer->setCoastalLicense(NULL);
+            $customer->setReduction(Null);
+            
+            $manager->persist($customer);
+        }
+
+        $manager->flush();
+    }
+}
+}
+
+
+/*ancienne boucle de fixture
+
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -24,7 +77,7 @@ class CostumerFixtures extends Fixture
                 $customer->setBirthDate(NULL);
                 $customer->setCoastalLicense(NULL);
                 $customer->setReduction(NULL);
-                /*preparer le manager à persister les données*/
+
                 $manager->persist($customer);
                 }
             else {
@@ -37,11 +90,11 @@ class CostumerFixtures extends Fixture
                 $customer->setBirthDate(NULL);
                 $customer->setCoastalLicense("czecs566666".$i);
                 $customer->setReduction(NULL);
-                /*preparer le manager à persister les données*/
+                
                 $manager->persist($customer);
             }
         }           
 
         $manager->flush();
     }
-}
+}*/
