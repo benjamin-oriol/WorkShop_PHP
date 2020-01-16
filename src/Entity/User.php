@@ -46,6 +46,39 @@ class User implements UserInterface
      */
     private $password;
 
+     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ss_number;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $hiring_date;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $me_date;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $coastal_licence;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $bees;
+
+   
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,8 +136,92 @@ class User implements UserInterface
     {
         return null;
     }
+    
+    public function getSsNumber(): ?string
+    {
+        return $this->ss_number;
+    }
 
+    public function setSsNumber(?string $ss_number): self
+    {
+        $this->ss_number = $ss_number;
+
+        return $this;
+    }
+
+    public function getHiringDate(): ?\DateTimeInterface
+    {
+        return $this->hiring_date;
+    }
+
+    public function setHiringDate(?\DateTimeInterface $hiring_date): self
+    {
+        $this->hiring_date = $hiring_date;
+
+        return $this;
+    }
+
+    public function getMeDate(): ?\DateTimeInterface
+    {
+        return $this->me_date;
+    }
+
+    public function setMeDate(?\DateTimeInterface $me_date): self
+    {
+        $this->me_date = $me_date;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getCoastalLicence(): ?string
+    {
+        return $this->coastal_licence;
+    }
+
+    public function setCoastalLicence(?string $coastal_licence): self
+    {
+        $this->coastal_licence = $coastal_licence;
+
+        return $this;
+    }
+
+
+    public function getContractType(): ?string
+    {
+        return $this->contract_type;
+    }
+
+    public function setContractType(string $contract_type): self
+    {
+        $this->contract_type = $contract_type;
+
+        return $this;
+    }
    
+    public function getBees(): ?bool
+    {
+        return $this->bees;
+    }
+
+    public function setBees(bool $bees): self
+    {
+        $this->bees = $bees;
+
+        return $this;
+    }
+
     /**
      * Returns the roles granted to the user.
      *
@@ -120,6 +237,13 @@ class User implements UserInterface
      * @return (Role|string)[] The user roles
      */
     private $roles = [];
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $contract_type;
+
+
 
     public function getRoles(): array
     {
@@ -149,5 +273,6 @@ class User implements UserInterface
     public function eraseCredentials(){
 
     }
+   
 
 }
