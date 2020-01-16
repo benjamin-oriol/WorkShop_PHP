@@ -112,3 +112,8 @@ body{
 .typographie{
     color: #2b3c4d!important;
 }
+
+.btn-delete{
+    font-size: 30px;
+    margin-left: 650px;
+}
