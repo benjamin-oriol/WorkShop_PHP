@@ -12,6 +12,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CustomerController extends AbstractController
 {
+
+    /**
+     * @var ObjectManager
+     */
+    private $manager;
+    public function __construct(EntityManagerInterface $manager){
+        $this->manager = $manager;
+    }
+
+
 /*liste des clients*/
     /**
      * @Route("/customer", name="customer")
