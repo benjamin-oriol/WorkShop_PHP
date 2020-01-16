@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\RegistrationType;
+use App\Entity\ChangePassword;
+use App\Form\ChangePasswordType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Notifications\Security\ChangePasswordNotification;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -23,27 +24,23 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route ("/inscription", name="security_registration")
+     * @Route ("/change-password", name="change-password")
      */
-    public function registration(Request $request, UserPasswordEncoderInterface $encoder) {
-        $user = new User();
-
-        $form = $this->createForm(RegistrationType::class, $user);
-
-        //Tu analyse la requte envoyée
+    public function changePassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, ChangePasswordNotification $notification) {
+        $changePassword = new ChangePassword();
+        $form = $this->createForm(ChangePasswordType::class, $changePassword);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
-
-            $this->manager->persist($user);
-            $this->manager->flush();
-
-            return $this->redirectToRoute('security_login');
+            $this->getUser()->setPassword($passwordEncoder->encodePassword($this->getUser(), $changePassword->getNewPassword()));
+            $this->manager->persist($this->getUser());
+            $this->manager->flush($this->getUser());
+            $notification->notify($this->getUser());
+            $this->addFlash('success', 'Votre mot de passe a été modifié avec success');
+            return $this->redirectToRoute('parameters');
         }
 
-        return $this->render('security/registration.html.twig', [
+        return $this->render('security/change-password.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -52,7 +49,7 @@ class SecurityController extends AbstractController
      * @Route ("/connexion", name="security_login")
      *
      */
-    public function login( AuthenticationUtils $authentication, Request $request) {
+    public function login(AuthenticationUtils $authentication) {
         $error= $authentication->getLastAuthenticationError();
         $lastusername= $authentication->getLastUsername();
 
