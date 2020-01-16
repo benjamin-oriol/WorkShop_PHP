@@ -6,6 +6,7 @@
 
 {% block content %}
   {% include "common/alert-success.html.twig" %}
+  {% include "common/modal-confirm.html.twig" %}
 
   <h2>Liste des Clients</h2>
 
@@ -33,7 +34,7 @@
               <td>{{ customer.BirthDate ? customer.BirthDate|date('d/m/Y') : '' }}</td>
               <td>{{customer.BirthDate ? ((customer.BirthDate|date('d/m'))==("now"|date('d/m')) ? 'imprimer le BR' :'<i class="fas fa-times"></i>') : '<i class="fas fa-times"></i>' }}</td>
               <td><a href="{{path('customer_edit',{'id': customer.id})}}"><i class="far fa-eye text-primary"></i></a></td>
-              <td><a href="{{path('customer_delete',{'id': customer.id})}}"><i class="fas fa-trash-alt text-danger"></i></a></td>
+              <td><a href="{{path('customer_delete',{'id': customer.id})}}" class="confirmModalLink"><i class="fas fa-trash-alt text-danger"></i></a></td>
             </tr>
           {% endfor %}
         </tbody>
