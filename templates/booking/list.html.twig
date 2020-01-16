@@ -1,0 +1,53 @@
+{% extends "common/layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - Réservations
+{% endblock %}
+
+{% block content %}
+  <h2>Réservations</h2>
+
+  <div class="card card-table">
+      <div class="card-body">
+        <a href="#" class="btn btn-success"><i class="fas fa-plus"></i> Créer une réservation</a>
+        <table class="table table-striped mt-4">
+          <thead class="bg-primary text-white">
+              <tr>
+                <th>Date</th>
+                <th>Equipments</th>
+                <th>Client</th>
+                <th>Moniteur</th>
+                <th>Détails / Editer</th>
+                <th>Supprimer</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for booking in bookings %}
+              <tr>
+                <td>{{ booking.startDate|date('d/m/Y h:i') ~ ' - ' ~ booking.endDate|date('h:i') }}</td>
+                <td>
+                  <ul>
+                  {% for equipment in booking.equipments %}
+                    <li><a href="{{ path('equipment.view', {id: equipment.id}) }}">{{ equipment.name }}</a></li>
+                  {% endfor %}
+                  </ul>
+                </td>
+                <td>
+                  <a href="{{ path('customer_edit', {id: booking.customer.id}) }}">
+                    {{ booking.customer.firstname ~ ' ' ~ booking.customer.lastname }}
+                  </a>
+                </td>
+                <td>
+                  <a href="{{ path('staff.detail', {id: booking.staff.id}) }}">
+                    {{ booking.staff.firstname ~ ' ' ~ booking.staff.lastname }}
+                  </a>
+                </td>
+                <td><a href="#"><i class="far fa-eye text-primary"></i></a></td>
+                <td><a href="#"><i class="fas fa-trash-alt text-danger"></i></a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+{% endblock %}
