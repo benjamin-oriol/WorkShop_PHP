@@ -11,6 +11,11 @@ Then move in.
 ```
   composer install
 ```
+* Install faker
+
+```
+  composer require fzaninotto/faker
+```
 
 * Create the database
 
