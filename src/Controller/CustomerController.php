@@ -56,4 +56,16 @@ class CustomerController extends AbstractController
             'editMode' => $customer->getId() !== null
             ]);
     }
+
+
+/*suppression d'un client*/
+    /**
+     * @Route("/customer/{id}/delete", name="customer_delete")
+     */
+    public function delete(Customer $customer) {
+        $this->manager->remove($customer);
+        $this->manager->flush();
+        $this->addFlash('success', 'client supprimé avec succès');
+        return $this->redirectToRoute('customer');
+    }
 }
