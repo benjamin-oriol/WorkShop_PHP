@@ -118,3 +118,9 @@ body{
     font-size: 30px;
     margin-left: 650px;
 }
+
+.img-detail-staff{
+    border-radius: 35px;
+    width: 250px;
+    margin-bottom: 25px;
+}
