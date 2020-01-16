@@ -6,11 +6,11 @@
 
 {% block content %}
 
-  <h2 class="mt-5">{{ equipment.name ?? 'Créer un équipement' }}</h2>
+  <h2>{{ equipment.name ?? 'Créer un équipement' }}</h2>
   <div class="card card-table">
     <div class="card-body">
       {{form_start(form)}}
-        <div class="row mt-5">
+        <div class="row">
             <div class="col-md-6">
                 {{ form_row(form.name) }}
             </div>
