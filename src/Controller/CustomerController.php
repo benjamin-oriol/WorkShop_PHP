@@ -17,12 +17,11 @@ class CustomerController extends AbstractController
      * @var ObjectManager
      */
     private $manager;
+
     public function __construct(EntityManagerInterface $manager){
         $this->manager = $manager;
     }
 
-
-/*liste des clients*/
     /**
      * @Route("/customer", name="customer")
      */
@@ -37,45 +36,51 @@ class CustomerController extends AbstractController
         ]);
     }
 
-
-
-/*creation/modification fiche nouveau client*/
     /**
-     * @Route("/customer/create", name="customer_create")
      * @Route("/customer/{id}/edit", name="customer_edit")
      */
-    public function form(Request $request, EntityManagerInterface $manager, Customer $customer= null) {
-
-        if (!$customer){
-        $customer = new Customer();
-        }
-
+    public function view(Customer $customer, Request $request) {
         $form= $this->createForm(CustomerType::class, $customer);
-
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($customer);
-            $manager->flush();
+            $this->manager->persist($customer);
+            $this->manager->flush();
+            $this->addFlash('success', 'Client modifié avec succès');
             return $this->redirectToRoute('customer');
         }
-    
-        
         return $this->render('customer/create.html.twig', [
             'formCustomer' => $form->createView(),
-            'editMode' => $customer->getId() !== null
-            ]);
+            'customer' => $customer
+        ]);
     }
 
+        /**
+     * @Route("/customer/create", name="customer_create")
+     */
+    public function create(Request $request) {
+        $customer = new Customer();
+        $form= $this->createForm(CustomerType::class, $customer);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $customer->setReduction(0);
+            $this->manager->persist($customer);
+            $this->manager->flush();
+            $this->addFlash('success', 'Client créé avec succès');
+            return $this->redirectToRoute('customer');
+        }
+        return $this->render('customer/create.html.twig', [
+            'formCustomer' => $form->createView(),
+            'customer' => $customer
+        ]);
+    }
 
-/*suppression d'un client*/
     /**
      * @Route("/customer/{id}/delete", name="customer_delete")
      */
     public function delete(Customer $customer) {
         $this->manager->remove($customer);
         $this->manager->flush();
-        $this->addFlash('success', 'client supprimé avec succès');
+        $this->addFlash('success', 'Client supprimé avec succès');
         return $this->redirectToRoute('customer');
     }
 }
