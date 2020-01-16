@@ -7,7 +7,9 @@
 {% block content %}
 
   {% include "common/alert-success.html.twig" %}
-  
+  {% include "common/modal-confirm.html.twig" %}
+
+
   <h2>Equipements</h2>
 
   <div class="card card-table">
@@ -32,7 +34,7 @@
                 <td>{{ price ? price ~ '€' : '<i class="fas fa-times"></i>' }}</td>
               {% endfor %}
               <td><a href="{{ path('equipment.view', {id: equipment.id}) }}"><i class="far fa-eye text-primary"></i></a></td>
-              <td><a href="{{ path('equipment.delete', {id: equipment.id}) }}"><i class="fas fa-trash-alt text-danger"></i></a></td>
+              <td><a href="{{ path('equipment.delete', {id: equipment.id}) }}" class="confirmModalLink"><i class="fas fa-trash-alt text-danger"></i></a></td>
             </tr>
           {% endfor %}
         </tbody>
