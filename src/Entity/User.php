@@ -2,14 +2,19 @@
 
 namespace App\Entity;
 
+use DateTime;
+use PhpParser\Builder\Property;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @Vich\Uploadable
  * @UniqueEntity(
  * "email",
  * message= "L'email que vous avez indiqué existe déjà !"
@@ -23,6 +28,20 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     *
+     * @var string|null
+     *  @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $filename ;
+
+    /**
+     *
+     * @var File|null 
+     * @Vich\UploadableField(mapping="property_images", fileNameProperty="filename")
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -75,6 +94,12 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $bees;
+
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $update_at;
 
    
 
@@ -273,6 +298,65 @@ class User implements UserInterface
     public function eraseCredentials(){
 
     }
-   
+
+    /**
+     * Undocumented function
+     *
+     * @return string|null
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $filename
+     * @return Property
+     */
+    public function setFilename(string $filename)
+    {
+        $this->filename = $filename;
+        return $this;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return null|File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $filename
+     * @return Property
+     */
+    public function setImageFile(string $imageFile)
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->update_at = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->update_at;
+    }
+
+    public function setUpdateAt(\DateTimeInterface $update_at): self
+    {
+        $this->update_at = $update_at;
+
+        return $this;
+    }
+
 
 }
