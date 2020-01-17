@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
+use Twig\Environment;
 
 
 class SecurityController extends AbstractController
@@ -23,8 +24,9 @@ class SecurityController extends AbstractController
     private $manager;
 
     //Déclaration du constructor, il initialise les attributs de l'objet, il est appelé en premier
-    public function __construct(EntityManagerInterface $manager){
+    public function __construct(EntityManagerInterface $manager, Environment $renderer){
         $this->manager = $manager;
+        $this->renderer = $renderer;
     }
 
     /**
@@ -105,14 +107,12 @@ class SecurityController extends AbstractController
             $message = (new \Swift_Message('Mot de passe oublié'))
                 ->setFrom('christine.toval@jetski.com')
                 ->setTo($user->getEmail())
-                ->setBody(
-                    "Trouvez ci-joint le token pour reseter votre mot de passe : " . $url,
-                    'text/html'
-                );
-
+                ->setBody($this->renderer->render('emails/modifPassword.html.twig', [
+                    'url' => $url
+                ]), 'text/html');
             $mailer->send($message);
 
-            $this->addFlash('notice', 'Mail envoyé');
+            $this->addFlash('success', 'Mail envoyé');
 
             return $this->redirectToRoute('security_login');
         }
