@@ -1,4 +1,3 @@
-let submitButton = document.getElementById('bookingSubmit') 
 let startTimeHour = document.getElementById('booking_startDate_time_hour')
 let startTimeMinute = document.getElementById('booking_startDate_time_minute')
 let timeRange = document.getElementById('booking_timeRange')
@@ -21,7 +20,6 @@ startTimeMinute.addEventListener('change', (e) => {
   } else {
     cleanTimeRange(1)
   }
-  isValidPeriod()
 })
 
 function disabledTimeRange(index) {
@@ -32,26 +30,5 @@ function disabledTimeRange(index) {
 function cleanTimeRange(index) {
   timeRange.childNodes[index].removeAttribute("disabled", false)
   timeRange.childNodes[index].style.backgroundColor = "#fff"
-}
-
-function disabledSubmit(value) {
-  if(value) {
-    submitButton.setAttribute("disabled", true)
-  } else {
-    submitButton.removeAttribute("disabled", false)
-  }  
-}
-
-function isValidPeriod() {
-  timeRange.childNodes.forEach(elt => {
-    if(elt.hasAttribute("selected")) {
-      if(elt.value === '1' && startTimeHour.value === '16' && startTimeMinute.value === '30') {
-        disabledSubmit(true)
-      }
-      if(elt.value === '2' && startTimeHour.value === '16') {
-        disabledSubmit(true)
-      }
-    }
-  });
 }
 

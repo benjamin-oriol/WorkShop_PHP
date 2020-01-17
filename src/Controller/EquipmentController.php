@@ -42,7 +42,7 @@ class EquipmentController extends AbstractController {
     if($form->isSubmitted() && $form->isValid()){
         $this->manager->persist($equipment);
         $this->manager->flush();
-        $this->addFlash('success', 'Equipment modifiée avec succès');
+        $this->addFlash('success', 'Equipement modifié avec succès');
         return $this->redirectToRoute('equipment.list');
     }
 
@@ -66,7 +66,7 @@ class EquipmentController extends AbstractController {
         $equipment->setPrice([null, null, null]);
         $this->manager->persist($equipment);
         $this->manager->flush();
-        $this->addFlash('success', 'Equipment créé avec succès');
+        $this->addFlash('success', 'Equipement créé avec succès');
         return $this->redirectToRoute('equipment.list');
     }
 

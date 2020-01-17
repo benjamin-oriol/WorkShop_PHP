@@ -26,6 +26,9 @@
               <div class="col-md-6">
                   {{ form_row(form.customer) }}
               </div>
+              <div class="col-md-6 mt-5">
+                <p>Prix : </p>
+              </div>
           </div>
           {% if  booking.id %}
             <p>{{ 'Date de réservation : ' ~ booking.bookingDate|date('d/m/Y') }}</p>
