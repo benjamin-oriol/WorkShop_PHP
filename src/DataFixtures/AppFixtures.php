@@ -36,10 +36,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 04 25 312 114 26";
         $hiring_date = null;
         $me_date = new \DateTime("10/04/2021");
-        $status = " Secretaire ";
+        $status = "Secretaire";
         $coastal_licence = null;
         $bees = false;
-        $contract_type = " CDI ";
+        $contract_type = "CDI";
 
         $user1 = new User();
 
@@ -65,10 +65,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 04 25 275 115 26";
         $hiring_date = null;
         $me_date = new \DateTime ("03/07/2020");
-        $status = " Plagiste ";
-        $coastal_licence = " 4528 ";
+        $status = "Plagiste";
+        $coastal_licence = "4528";
         $bees = false;
-        $contract_type = " CDD ";
+        $contract_type = "CDD";
 
         $user2 = new User();
 
@@ -94,10 +94,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 75 04 34 273 115 26";
         $hiring_date = null;
         $me_date = new \DateTime ("03/07/2020");
-        $status = " Plagiste ";
+        $status = "Plagiste";
         $coastal_licence = null;
         $bees = false;
-        $contract_type = " CDD ";
+        $contract_type = "CDD";
 
         $user3 = new User();
 
@@ -123,10 +123,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 04 25 275 116 76";
         $hiring_date = null;
         $me_date = new \DateTime ("03/09/2020");
-        $status = " Moniteur ";
-        $coastal_licence = " 4542 ";
+        $status = "Moniteur";
+        $coastal_licence = "4542";
         $bees = true;
-        $contract_type = " CDD ";
+        $contract_type = "CDD";
 
         $user4 = new User();
 
@@ -152,10 +152,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 04 25 275 116 76";
         $hiring_date = null;
         $me_date = new \DateTime ("03/09/2020");
-        $status = " Moniteur ";
-        $coastal_licence = " 4547 ";
+        $status = "Moniteur";
+        $coastal_licence = "4547";
         $bees = true;
-        $contract_type = " CDD ";
+        $contract_type = "CDD";
 
         $user5 = new User();
 
@@ -181,10 +181,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 05 25 277 115 76";
         $hiring_date = null;
         $me_date = new \DateTime ("03/09/2020");
-        $status = " Moniteur ";
-        $coastal_licence = " 4555 ";
+        $status = "Moniteur";
+        $coastal_licence = "4555";
         $bees = true;
-        $contract_type = " CDI ";
+        $contract_type = "CDI";
 
         $user6 = new User();
 

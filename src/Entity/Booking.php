@@ -29,17 +29,6 @@ class Booking
     private $startDate;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $endDate;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="bookings")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $staff;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Equipment", inversedBy="bookings")
      */
     private $equipments;
@@ -50,9 +39,20 @@ class Booking
      */
     private $customer;
 
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $timeRange;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="bookings")
+     */
+    private $staffs;
+
     public function __construct()
     {
         $this->equipments = new ArrayCollection();
+        $this->staffs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,30 +80,6 @@ class Booking
     public function setStartDate(\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    public function getEndDate(): ?\DateTimeInterface
-    {
-        return $this->endDate;
-    }
-
-    public function setEndDate(\DateTimeInterface $endDate): self
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    public function getStaff(): ?User
-    {
-        return $this->staff;
-    }
-
-    public function setStaff(?User $staff): self
-    {
-        $this->staff = $staff;
 
         return $this;
     }
@@ -142,6 +118,44 @@ class Booking
     public function setCustomer(?Customer $customer): self
     {
         $this->customer = $customer;
+
+        return $this;
+    }
+
+    public function getTimeRange(): ?string
+    {
+        return $this->timeRange;
+    }
+
+    public function setTimeRange(string $timeRange): self
+    {
+        $this->timeRange = $timeRange;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getStaffs(): Collection
+    {
+        return $this->staffs;
+    }
+
+    public function addStaff(User $staff): self
+    {
+        if (!$this->staffs->contains($staff)) {
+            $this->staffs[] = $staff;
+        }
+
+        return $this;
+    }
+
+    public function removeStaff(User $staff): self
+    {
+        if ($this->staffs->contains($staff)) {
+            $this->staffs->removeElement($staff);
+        }
 
         return $this;
     }

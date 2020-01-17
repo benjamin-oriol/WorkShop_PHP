@@ -5,11 +5,15 @@
 {% endblock %}
 
 {% block content %}
+
+{% include "common/alert-success.html.twig" %}
+{% include "common/modal-confirm.html.twig" %}
+
   <h2>Réservations</h2>
 
   <div class="card card-table">
       <div class="card-body">
-        <a href="#" class="btn btn-success"><i class="fas fa-plus"></i> Créer une réservation</a>
+        <a href="{{ path('booking.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Créer une réservation</a>
         <table class="table table-striped mt-4">
           <thead class="bg-primary text-white">
               <tr>
@@ -24,7 +28,10 @@
           <tbody>
             {% for booking in bookings %}
               <tr>
-                <td>{{ booking.startDate|date('d/m/Y h:i') ~ ' - ' ~ booking.endDate|date('h:i') }}</td>
+                <td>
+                  {{ booking.startDate|date('d/m/Y h:i') }} - 
+                  {{ booking.timeRange == '0' ? '30min' : booking.timeRange == '1' ? '1h' : '2h' }}
+                </td>
                 <td>
                   <ul>
                   {% for equipment in booking.equipments %}
@@ -38,13 +45,19 @@
                   </a>
                 </td>
                 <td>
-                  <a href="{{ path('staff.detail', {id: booking.staff.id}) }}">
-                    {{ booking.staff.firstname ~ ' ' ~ booking.staff.lastname }}
-                  </a>
+                  {% for staff in booking.staffs %}
+                    <li>
+                      <a href="{{ path('staff.detail', {id: staff.id}) }}">
+                        {{ staff.firstname ~ ' ' ~ staff.lastname }}
+                      </a>
+                    </li>
+                  {% endfor %}
                 </td>
-                <td><a href="#"><i class="far fa-eye text-primary"></i></a></td>
+                <td><a href="{{ path('booking.view', {id: booking.id}) }}"><i class="far fa-eye text-primary"></i></a></td>
                 <td>
-                  <a href="{{ date(booking.startDate) > date('now', 'Europe/Paris') ? path('booking.delete', {id: booking.id}) : '#' }}">
+                  <a 
+                    class="confirmModalLink"
+                    href="{{ date(booking.startDate) > date('now', 'Europe/Paris') ? path('booking.delete', {id: booking.id}) : '#' }}">
                     <i class="fas fa-trash-alt {{ date(booking.startDate) > date('now', 'Europe/Paris') ? 'text-danger' : 'text-secondary'}}"></i>
                   </a>
                 </td>
