@@ -112,7 +112,7 @@ class SecurityController extends AbstractController
                 ]), 'text/html');
             $mailer->send($message);
 
-            $this->addFlash('success', 'Mail envoyé');
+            $this->addFlash('success', 'Votre mail de réinitialisation vous a bien été envoyé ! ');
 
             return $this->redirectToRoute('security_login');
         }
@@ -141,7 +141,7 @@ class SecurityController extends AbstractController
             $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
             $entityManager->flush();
 
-            $this->addFlash('notice', 'Mot de passe mis à jour');
+            $this->addFlash('success', 'C\'est parfait, votre nouveau mot de passe a bien été enregistré ! ');
 
             return $this->redirectToRoute('security_login');
         }else {
