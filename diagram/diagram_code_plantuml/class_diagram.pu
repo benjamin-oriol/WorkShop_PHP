@@ -1,6 +1,6 @@
 @startuml
 
-title Classes - Class Diagram
+title  Class Diagram
 
 skinparam classAttributeIconSize 0
 
@@ -142,10 +142,10 @@ class Leave {
     and other Setters ...
 }
 
-Booking "many"*-down-"many" Equipement: Composition
-Booking  "1" o-down- "1" Customer: Aggregation
+Booking "many"*-right-"many" Equipement: Composition
+Booking  "1" o-left- "1" Customer: Aggregation
 Booking "many"*-down-"many" Staff: Composition
-Staff "1" o-up- "1" Leave: Aggregation
+Staff "1" <-left-> "1" Leave: Association
 
 
 @enduml
