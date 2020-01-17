@@ -1,6 +1,8 @@
 {% extends '/common/layout.html.twig' %}
 
 {% block body %}
+{% include "common/alert-success.html.twig" %}
+
 <div class="#">
     <div class="row col-sm-12">
             <div class="card card-login">
@@ -14,6 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label>Mot de passe</label><br>
+                        <a href="{{ path('security_forgot') }}"><small class="text-success">Mot de passe oublié ?</small></a><br>
                         {% if error %}
                           <small class="text-danger">Mot de passe invalide pour cette email</small>
                         {% endif %}
