@@ -25,6 +25,12 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @var string le token qui servira lors de l'oubli de mot de passe
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $resetToken;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email()
      */
@@ -220,6 +226,22 @@ class User implements UserInterface
         $this->bees = $bees;
 
         return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getResetToken(): string
+    {
+        return $this->resetToken;
+    }
+
+    /**
+     * @param string $resetToken
+     */
+    public function setResetToken(?string $resetToken): void
+    {
+        $this->resetToken = $resetToken;
     }
 
     /**
