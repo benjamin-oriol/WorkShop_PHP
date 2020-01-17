@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class EquipmentController extends AbstractController {
 
   /**
-  * @var ObjectManager
+  * @var EntityManagerInterface
   */
   private $manager;
 

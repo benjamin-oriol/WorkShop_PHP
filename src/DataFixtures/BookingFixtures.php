@@ -22,8 +22,8 @@ class BookingFixtures extends Fixture implements DependentFixtureInterface {
 
     $booking2 = new Booking();
     $booking2->setBookingDate(new \DateTime('2019-12-25 13:45:00'));
-    $booking2->setStartDate(new \DateTime('2020-02-12 10:30:00'));
-    $booking2->setEndDate(new \DateTime('2020-02-12 11:00:00'));
+    $booking2->setStartDate(new \DateTime('2020-01-12 10:30:00'));
+    $booking2->setEndDate(new \DateTime('2020-01-12 11:00:00'));
     $booking2->setStaff($this->getReference(AppFixtures::MONITEUR5));
     $booking2->addEquipment($this->getReference(EquipmentFixtures::EQUIPMENT2));
     $booking2->setCustomer($this->getReference(CostumerFixtures::CUSTOMER2));

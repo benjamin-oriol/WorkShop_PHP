@@ -43,7 +43,11 @@
                   </a>
                 </td>
                 <td><a href="#"><i class="far fa-eye text-primary"></i></a></td>
-                <td><a href="#"><i class="fas fa-trash-alt text-danger"></i></a></td>
+                <td>
+                  <a href="{{ date(booking.startDate) > date('now', 'Europe/Paris') ? path('booking.delete', {id: booking.id}) : '#' }}">
+                    <i class="fas fa-trash-alt {{ date(booking.startDate) > date('now', 'Europe/Paris') ? 'text-danger' : 'text-secondary'}}"></i>
+                  </a>
+                </td>
               </tr>
             {% endfor %}
           </tbody>
