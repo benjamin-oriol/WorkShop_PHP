@@ -55,12 +55,15 @@ body{
     border-radius: 20px;
 }
 
-.background-cnx{
-    background-image: url('/assets/img/Fond_accueil.jpg')!important;
-    background-size: cover;
+.login-background {
+    height: 100vh;
+    background-image: url('/assets/img/login-bg.jpg')!important;
+    background-position: center;
+    background-size: cover !important;
 }
 
 .card-login{
+    opacity: 0.8;
     border-radius:35px!important;
     margin: auto;
     width: 700px;

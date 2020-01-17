@@ -9,6 +9,10 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+    public const MONITEUR4 = 'moniteur4';
+    public const MONITEUR5 = 'moniteur5';
+    public const MONITEUR6 = 'moniteur6';
+
     /**
      * @var UserPasswordEncoderInterface
      */
@@ -32,10 +36,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 04 25 312 114 26";
         $hiring_date = null;
         $me_date = new \DateTime("10/04/2021");
-        $status = " Secretaire ";
+        $status = "Secretaire";
         $coastal_licence = null;
-        $bees = "0";
-        $contract_type = " CDI ";
+        $bees = false;
+        $contract_type = "CDI";
 
         $user1 = new User();
 
@@ -52,7 +56,6 @@ class AppFixtures extends Fixture
         $user1->setContractType($contract_type);  
 
         $manager->persist($user1);
-        $manager->flush();
 
         //USER 2
         $email = "Damien.fayolle@jetski.com";
@@ -62,10 +65,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 04 25 275 115 26";
         $hiring_date = null;
         $me_date = new \DateTime ("03/07/2020");
-        $status = " Plagiste ";
-        $coastal_licence = " 4528 ";
-        $bees = "0";
-        $contract_type = " CDD ";
+        $status = "Plagiste";
+        $coastal_licence = "4528";
+        $bees = false;
+        $contract_type = "CDD";
 
         $user2 = new User();
 
@@ -82,7 +85,6 @@ class AppFixtures extends Fixture
         $user2->setContractType($contract_type);  
 
         $manager->persist($user2);
-        $manager->flush();
 
         //USER 3
         $email = "Stephanie.chorel@jetski.com";
@@ -92,10 +94,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 75 04 34 273 115 26";
         $hiring_date = null;
         $me_date = new \DateTime ("03/07/2020");
-        $status = " Plagiste ";
+        $status = "Plagiste";
         $coastal_licence = null;
-        $bees = "0";
-        $contract_type = " CDD ";
+        $bees = false;
+        $contract_type = "CDD";
 
         $user3 = new User();
 
@@ -112,7 +114,6 @@ class AppFixtures extends Fixture
         $user3->setContractType($contract_type);  
 
         $manager->persist($user3);
-        $manager->flush();
 
         //USER 4
         $email = "Arthur.Lhermet@jetski.com";
@@ -122,10 +123,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 04 25 275 116 76";
         $hiring_date = null;
         $me_date = new \DateTime ("03/09/2020");
-        $status = " Moniteur ";
-        $coastal_licence = " 4542 ";
-        $bees = "1";
-        $contract_type = " CDD ";
+        $status = "Moniteur";
+        $coastal_licence = "4542";
+        $bees = true;
+        $contract_type = "CDD";
 
         $user4 = new User();
 
@@ -142,7 +143,6 @@ class AppFixtures extends Fixture
         $user4->setContractType($contract_type);  
 
         $manager->persist($user4);
-        $manager->flush();
 
         //USER 5
         $email = "Arthur.Lhermet@jetski.com";
@@ -152,10 +152,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 04 25 275 116 76";
         $hiring_date = null;
         $me_date = new \DateTime ("03/09/2020");
-        $status = " Moniteur ";
-        $coastal_licence = " 4547 ";
-        $bees = "1";
-        $contract_type = " CDD ";
+        $status = "Moniteur";
+        $coastal_licence = "4547";
+        $bees = true;
+        $contract_type = "CDD";
 
         $user5 = new User();
 
@@ -172,7 +172,6 @@ class AppFixtures extends Fixture
         $user5->setContractType($contract_type);  
 
         $manager->persist($user5);
-        $manager->flush();
 
         //USER 6
         $email = "Alexis.berger@jetski.com";
@@ -182,10 +181,10 @@ class AppFixtures extends Fixture
         $ss_number = "1 77 05 25 277 115 76";
         $hiring_date = null;
         $me_date = new \DateTime ("03/09/2020");
-        $status = " Moniteur ";
-        $coastal_licence = " 4555 ";
-        $bees = "1";
-        $contract_type = " CDI ";
+        $status = "Moniteur";
+        $coastal_licence = "4555";
+        $bees = true;
+        $contract_type = "CDI";
 
         $user6 = new User();
 
@@ -202,6 +201,11 @@ class AppFixtures extends Fixture
         $user6->setContractType($contract_type);  
 
         $manager->persist($user6);
+
+        $this->addReference(self::MONITEUR4, $user4);
+        $this->addReference(self::MONITEUR5, $user5);
+        $this->addReference(self::MONITEUR6, $user6);
+
         $manager->flush();
     }
 }

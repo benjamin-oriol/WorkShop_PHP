@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,6 +42,16 @@ class Equipment
      * @ORM\Column(type="text")
      */
     private $price;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Booking", mappedBy="equipments")
+     */
+    private $bookings;
+
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -103,6 +115,34 @@ class Equipment
     public function setPrice(array $price): self
     {
         $this->price = serialize($price);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Booking[]
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings[] = $booking;
+            $booking->addEquipment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): self
+    {
+        if ($this->bookings->contains($booking)) {
+            $this->bookings->removeElement($booking);
+            $booking->removeEquipment($this);
+        }
 
         return $this;
     }

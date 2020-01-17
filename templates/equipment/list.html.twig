@@ -28,7 +28,7 @@
         </thead>
         <tbody>
           {% for equipment in equipments %}
-            <tr id="{{ equipment.id }}">
+            <tr>
               <td>{{ equipment.name }}</td>
               {% for price in equipment.price %}
                 <td>{{ price ? price ~ '€' : '<i class="fas fa-times"></i>' }}</td>

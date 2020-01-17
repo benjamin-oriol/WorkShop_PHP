@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -82,7 +84,36 @@ class User implements UserInterface
      */
     private $bees;
 
-   
+   /**
+     * Returns the roles granted to the user.
+     *
+     *     public function getRoles()
+     *     {
+     *         return ['ROLE_USER'];
+     *     }
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return (Role|string)[] The user roles
+     */
+    private $roles = [];
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $contract_type;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Booking", mappedBy="staffs")
+     */
+    private $bookings;
+
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -203,7 +234,6 @@ class User implements UserInterface
         return $this;
     }
 
-
     public function getContractType(): ?string
     {
         return $this->contract_type;
@@ -244,29 +274,6 @@ class User implements UserInterface
         $this->resetToken = $resetToken;
     }
 
-    /**
-     * Returns the roles granted to the user.
-     *
-     *     public function getRoles()
-     *     {
-     *         return ['ROLE_USER'];
-     *     }
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return (Role|string)[] The user roles
-     */
-    private $roles = [];
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $contract_type;
-
-
-
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -275,6 +282,7 @@ class User implements UserInterface
     
         return array_unique($roles);
     }
+    
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -295,6 +303,32 @@ class User implements UserInterface
     public function eraseCredentials(){
 
     }
-   
 
+    /**
+     * @return Collection|Booking[]
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings[] = $booking;
+            $booking->addStaff($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): self
+    {
+        if ($this->bookings->contains($booking)) {
+            $this->bookings->removeElement($booking);
+            $booking->removeStaff($this);
+        }
+
+        return $this;
+    }
 }

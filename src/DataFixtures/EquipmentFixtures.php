@@ -6,7 +6,11 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class EquipmentFixtures extends Fixture {
-  
+
+  public const EQUIPMENT1 = 'equipment1';
+  public const EQUIPMENT2 = 'equipment2';
+  public const EQUIPMENT3 = 'equipment3';
+
   public function load(ObjectManager $manager)
   {
     $equipment1 = new Equipment();
@@ -59,6 +63,10 @@ class EquipmentFixtures extends Fixture {
     $equipment7->setIsValid(true);
     $equipment7->setPrice(["40", null, null]);
     $manager->persist($equipment7);
+
+    $this->addReference(self::EQUIPMENT1, $equipment1);
+    $this->addReference(self::EQUIPMENT2, $equipment2);
+    $this->addReference(self::EQUIPMENT3, $equipment3); 
 
     $manager->flush();
   }
